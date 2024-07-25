@@ -1,11 +1,11 @@
 // import { Header } from '@/widgets/Header';
 
 function App() {
-    return (
-        <>
-            <Header />
-        </>
-    );
+  return (
+    <>
+      <Header />
+    </>
+  );
 }
 
-export default App
+export default App;
