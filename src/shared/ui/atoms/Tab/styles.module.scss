@@ -1,0 +1,24 @@
+@import "../../../styles/colors";
+@import "../../../styles/mixins";
+
+.tab {
+  display: block;
+
+  max-width: 16.25rem;
+  width: 100%;
+  background-color: $tabBackground;
+
+  border-top-right-radius: .625rem;
+  border-top-left-radius: .625rem;
+  padding: .815rem 0 .815rem 1.25rem;
+
+  font-size: 1.25rem;
+
+  cursor: pointer;
+
+  @include noSelect;
+}
+
+.activeTab {
+  background-color: $active-tabBackground;
+}
