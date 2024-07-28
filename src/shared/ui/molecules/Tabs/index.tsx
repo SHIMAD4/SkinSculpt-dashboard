@@ -4,14 +4,21 @@ import styles from './styles.module.scss';
 import clsx from 'clsx';
 import { FC, useState, useCallback, useEffect } from 'react';
 
+type TitleProps = {
+  id: number;
+  title: string;
+};
+
 export type TabsProps = {
-  titles: { id: number; title: string }[];
+  titles: TitleProps[];
 };
 
 const Tabs: FC<TabsProps> = ({ titles }) => {
-  const [activeTab, setActiveTab] = useState(titles[0].title);
+  const defaultTab = titles[0].title;
+  const savedTab = localStorage.getItem('activeTab') || defaultTab;
+  const [activeTab, setActiveTab] = useState(savedTab);
 
-  useEffect(() => {}, []);
+  useEffect(() => localStorage.setItem('activeTab', activeTab), [activeTab]);
 
   const handleClick = useCallback(
     (event: React.MouseEvent<HTMLUListElement>) => {
