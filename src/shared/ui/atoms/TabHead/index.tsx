@@ -7,8 +7,8 @@ type TabProps = {
   className?: string;
 };
 
-const Tab: FC<TabProps> = memo(({ title, className }) => (
+const TabHead: FC<TabProps> = memo(({ title, className }) => (
   <li className={clsx([styles.tab, className])}>{title}</li>
 ));
 
-export default Tab;
+export default TabHead;

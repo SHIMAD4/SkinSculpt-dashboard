@@ -1,6 +1,6 @@
-import Tabs from '@/shared/ui/molecules/Tabs';
-import { tabsTitles } from '@/shared/lib/data';
 import Wrapper from '@/widgets/Wrapper';
+import Tabs from '@/widgets/Tabs';
+import { tabsTitles } from '@/shared/lib/data';
 
 function App() {
   return (
