@@ -24,7 +24,7 @@ export type ContentType = {
   content: ReactNode;
 };
 
-export const tabContents: ContentType[] = [
+export const tabContentsArray: ContentType[] = [
   {
     id: 1,
     content: <p>Сводка</p>,

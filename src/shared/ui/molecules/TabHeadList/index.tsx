@@ -1,8 +1,8 @@
-import TabHead from '@/shared/ui/atoms/TabHead';
 import TabStyles from '@/shared/ui/atoms/TabHead/styles.module.scss';
 import styles from './styles.module.scss';
 import clsx from 'clsx';
 import { FC, useCallback } from 'react';
+import { TabHead } from '@/shared/ui/atoms';
 
 export type TitleType = {
   id: number;

@@ -1,8 +1,8 @@
 import clsx from 'clsx';
 import { FC } from 'react';
-import TabContent from '@/shared/ui/atoms/TabContent';
+import { TabContent } from '@/shared/ui/atoms';
 import TabContentStyles from '@/shared/ui/atoms/TabContent/style.module.scss';
-import { tabContents } from '@/shared/lib/data/Tabs';
+import { tabContentsArray } from '@/shared/lib/data/Tabs';
 
 type TitleType = {
   id: number;
@@ -21,7 +21,7 @@ const TabContentList: FC<TabsProps> = ({ titles, activeTab }) => (
         contentId={id}
         key={id}
         className={clsx(activeTab === title && TabContentStyles.activeContent)}
-        tabContent={tabContents}
+        tabContent={tabContentsArray}
       />
     ))}
   </ul>
