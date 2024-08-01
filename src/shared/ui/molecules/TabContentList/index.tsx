@@ -2,7 +2,7 @@ import clsx from 'clsx';
 import { FC } from 'react';
 import { TabContent } from '@/shared/ui/atoms';
 import TabContentStyles from '@/shared/ui/atoms/TabContent/style.module.scss';
-import { tabContentsArray } from '@/shared/lib/data/Tabs';
+import { ContentType } from '@/shared/lib/types/Tabs';
 
 type TitleType = {
   id: number;
@@ -12,9 +12,10 @@ type TitleType = {
 export type TabsProps = {
   titles: TitleType[];
   activeTab: string;
+  tabContentsArray: ContentType[];
 };
 
-const TabContentList: FC<TabsProps> = ({ titles, activeTab }) => (
+const TabContentList: FC<TabsProps> = ({ titles, activeTab, tabContentsArray }) => (
   <ul>
     {titles.map(({ id, title }) => (
       <TabContent

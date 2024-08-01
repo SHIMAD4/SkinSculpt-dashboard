@@ -5,3 +5,13 @@
   margin: 0 auto;
   padding: 0 3.25rem;
 }
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  column-gap: 7.7rem;
+  row-gap: 4.875rem;
+
+  padding: 0;
+}

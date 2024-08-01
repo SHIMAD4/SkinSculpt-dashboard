@@ -1,8 +1,8 @@
 import styles from './style.module.scss';
 import clsx from 'clsx';
 import { FC, memo } from 'react';
-import { ContentType } from '@/shared/lib/data/Tabs';
 import { Text } from '../Text';
+import { ContentType } from '@/shared/lib/types/Tabs';
 
 type TabContentProps = {
   contentId: number;

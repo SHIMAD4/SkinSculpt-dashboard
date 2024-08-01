@@ -1,0 +1,2 @@
+// TODO: Заполнить
+export default {};
