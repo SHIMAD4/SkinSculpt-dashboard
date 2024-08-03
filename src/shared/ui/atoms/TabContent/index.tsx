@@ -5,15 +5,15 @@ import { Text } from '../Text';
 import { ContentType } from '@/shared/lib/types/Tabs';
 
 type TabContentProps = {
-  contentId: number;
+  titleId: number;
   tabContent: ContentType[];
   className?: string;
 };
 
-export const TabContent: FC<TabContentProps> = memo(({ contentId, tabContent, className }) =>
+export const TabContent: FC<TabContentProps> = memo(({ titleId, tabContent, className }) =>
   tabContent.map(
     ({ id, content }) =>
-      contentId === id && (
+      titleId === id && (
         <Text as="li" key={id} className={clsx([styles.content, className])}>
           {content}
         </Text>

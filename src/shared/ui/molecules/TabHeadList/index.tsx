@@ -1,34 +1,30 @@
 import TabStyles from '@/shared/ui/atoms/TabHead/styles.module.scss';
 import styles from './styles.module.scss';
 import clsx from 'clsx';
-import { FC, useCallback } from 'react';
+import { FC, MouseEvent } from 'react';
 import { TabHead } from '@/shared/ui/atoms';
+import { handleClick } from '@/shared/lib/slices/Tabs/TabTitleSlice.tsx';
+import { useAppDispatch, useAppSelector } from '@/shared/lib/hooks';
 
-export type TitleType = {
-  id: number;
-  title: string;
-};
+const TabHeadList: FC = () => {
+  const titles = useAppSelector((state) => state.tabs.tabsArray);
+  const activeTab = useAppSelector((state) => state.tabs.activeTab);
 
-export type TabHeadListProps = {
-  titles: TitleType[];
-  activeTab: string;
-  setActiveTab: (tab: string) => void;
-};
+  const dispatch = useAppDispatch();
 
-const TabHeadList: FC<TabHeadListProps> = ({ titles, activeTab, setActiveTab }) => {
-  const handleClick = useCallback(
-    (event: React.MouseEvent<HTMLUListElement>) => {
-      const { target, currentTarget } = event;
-      if (target === currentTarget) return;
+  const onListClick = ({ target, currentTarget }: MouseEvent<HTMLUListElement>) => {
+    if (target instanceof HTMLElement && currentTarget) {
+      if (target.innerText === activeTab) return;
 
-      const targetElement = target as HTMLElement;
-      setActiveTab(targetElement.innerText);
-    },
-    [setActiveTab],
-  );
+      const targetText = target.innerText;
+      const parentText = currentTarget.innerText;
+
+      dispatch(handleClick({ targetText, parentText }));
+    }
+  };
 
   return (
-    <ul className={styles.tabList} onClick={handleClick}>
+    <ul className={styles.tabList} onClick={(e) => onListClick(e)}>
       {titles.map(({ id, title }) => (
         <TabHead
           title={title}

@@ -1,14 +1,10 @@
-import { FC, useEffect, useState } from 'react';
+import { FC } from 'react';
 import TabContentList from '@/shared/ui/molecules/TabContentList';
-import TabHeadList, { TitleType } from '@/shared/ui/molecules/TabHeadList';
+import TabHeadList from '@/shared/ui/molecules/TabHeadList';
 import Wrapper from '@/widgets/Wrapper';
 import WrapperStyles from '@/widgets/Wrapper/styles.module.scss';
 import { ChartBlock } from '@/features';
 import { ContentType } from '@/shared/lib/types/Tabs';
-
-type TabsProps = {
-  titles: TitleType[];
-};
 
 // TODO: Убрать пример
 const tabContentsArray: ContentType[] = [
@@ -86,17 +82,11 @@ const tabContentsArray: ContentType[] = [
   },
 ];
 
-const Tabs: FC<TabsProps> = ({ titles }) => {
-  const defaultTab = titles[0].title;
-  const savedTab = localStorage.getItem('activeTab') || defaultTab;
-  const [activeTab, setActiveTab] = useState(savedTab);
-
-  useEffect(() => localStorage.setItem('activeTab', activeTab), [activeTab]);
-
+const Tabs: FC = () => {
   return (
     <>
-      <TabHeadList titles={titles} activeTab={activeTab} setActiveTab={setActiveTab} />
-      <TabContentList titles={titles} activeTab={activeTab} tabContentsArray={tabContentsArray} />
+      <TabHeadList />
+      <TabContentList tabContentsArray={tabContentsArray} />
     </>
   );
 };
