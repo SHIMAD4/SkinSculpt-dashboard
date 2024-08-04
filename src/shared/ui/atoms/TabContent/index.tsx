@@ -1,22 +1,20 @@
-import styles from './style.module.scss';
-import clsx from 'clsx';
 import { FC, memo } from 'react';
-import { Text } from '../Text';
-import { ContentType } from '@/shared/lib/types/Tabs';
+import WrapperStyles from '@/widgets/Wrapper/styles.module.scss';
+import { ChartBlock } from '@/features';
+import Wrapper from '@/widgets/Wrapper';
+import clsx from 'clsx';
+import styles from './style.module.scss';
 
 type TabContentProps = {
-  titleId: number;
-  tabContent: ContentType[];
   className?: string;
 };
 
-export const TabContent: FC<TabContentProps> = memo(({ titleId, tabContent, className }) =>
-  tabContent.map(
-    ({ id, content }) =>
-      titleId === id && (
-        <Text as="li" key={id} className={clsx([styles.content, className])}>
-          {content}
-        </Text>
-      ),
-  ),
-);
+export const TabContent: FC<TabContentProps> = memo(({ className }) => {
+  return (
+    <li className={clsx([styles.content, className])}>
+      <Wrapper className={WrapperStyles.grid}>
+        <ChartBlock />
+      </Wrapper>
+    </li>
+  );
+});

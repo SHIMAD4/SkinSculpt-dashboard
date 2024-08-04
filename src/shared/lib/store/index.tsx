@@ -1,9 +1,13 @@
 import { configureStore } from '@reduxjs/toolkit';
-import TitleReducer from '../slices/Tabs/TabTitleSlice.tsx';
+import TitleReducer from '../slices/Tabs/TitleSlice.tsx';
+import ContentReducer from '../slices/Tabs/ContentSlice.tsx';
+import ChartReducer from '../slices/Tabs/ChartSlice.tsx';
 
 const store = configureStore({
   reducer: {
-    tabs: TitleReducer,
+    tabsTitle: TitleReducer,
+    tabsContent: ContentReducer,
+    tabsChart: ChartReducer,
   },
 });
 

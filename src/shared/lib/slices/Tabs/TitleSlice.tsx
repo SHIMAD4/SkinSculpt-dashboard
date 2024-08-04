@@ -1,14 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-
-type TitleType = {
-  id: number;
-  title: string;
-};
-
-type PayloadActionType = {
-  targetText: string;
-  parentText: string;
-};
+import { TitleType, TitlePayloadActionType } from '@/shared/lib/types/Tabs/slicesTypes.tsx';
 
 const defaultTab: string = localStorage.getItem('activeTab') || 'Сводка';
 const tabsArray: TitleType[] = [
@@ -18,16 +9,15 @@ const tabsArray: TitleType[] = [
   { id: 4, title: 'Я. Маркет' },
 ];
 
-// eslint-disable-next-line react-refresh/only-export-components
-const TabTitleSlice = createSlice({
-  name: 'tabs',
+const titleSlice = createSlice({
+  name: 'tabsTitle',
   initialState: {
     tabsArray,
     activeTab: defaultTab,
   },
   reducers: {
-    handleClick(state, action: PayloadAction<PayloadActionType>) {
-      const { targetText, parentText } = action.payload;
+    handleTabClick(state, { payload }: PayloadAction<TitlePayloadActionType>) {
+      const { targetText, parentText } = payload;
 
       if (targetText === parentText) return;
 
@@ -37,5 +27,5 @@ const TabTitleSlice = createSlice({
   },
 });
 
-export const { handleClick } = TabTitleSlice.actions;
-export default TabTitleSlice.reducer;
+export const { handleTabClick } = titleSlice.actions;
+export default titleSlice.reducer;
