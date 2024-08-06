@@ -7,8 +7,7 @@ export type TitleType = {
 };
 
 export type TitlePayloadActionType = {
-  targetText: string;
-  parentText: string;
+  clickedTabText: string;
 };
 
 // Chart

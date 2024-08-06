@@ -28,13 +28,15 @@ export const ChartBlock: FC = () => {
   );
 };
 
-const ListElement: FC<ListElementProps> = ({ title, number }) => (
-  <li className={styles.element}>
-    <Text as="p" design="common">
-      {title}
-    </Text>
-    <Text as="p" design="basic-graphics">
-      {number}
-    </Text>
-  </li>
-);
+const ListElement: FC<ListElementProps> = ({ title, number }) => {
+  return (
+    <li className={styles.element}>
+      <Text as="p" design="common">
+        {title}
+      </Text>
+      <Text as="p" design="basic-graphics">
+        {number}
+      </Text>
+    </li>
+  );
+};

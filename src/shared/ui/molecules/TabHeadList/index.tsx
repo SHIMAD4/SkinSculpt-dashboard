@@ -5,8 +5,14 @@ import { FC, MouseEvent, useEffect } from 'react';
 import { TabHead } from '@/shared/ui/atoms';
 import { handleTabClick } from '@/shared/lib/slices/Tabs/TitleSlice.tsx';
 import { useAppDispatch, useAppSelector } from '@/shared/lib/hooks';
-import { getContentData } from '@/shared/lib/slices/Tabs/ContentSlice.tsx';
+import {
+  getOzonData,
+  getSummaryData,
+  getWildberriesData,
+  getYaMarketData,
+} from '@/shared/lib/slices/Tabs/ContentSlice.tsx';
 import { getChartData } from '@/shared/lib/slices/Tabs/ChartSlice.tsx';
+import { TABS } from '@/shared/lib/contants/tabs.ts';
 
 const TabHeadList: FC = () => {
   const dispatch = useAppDispatch();
@@ -14,19 +20,31 @@ const TabHeadList: FC = () => {
 
   const onListClick = ({ target, currentTarget }: MouseEvent<HTMLUListElement>) => {
     if (target instanceof HTMLElement && currentTarget) {
-      if (target.innerText === activeTab) return;
+      const clickedTabText = target.innerText;
 
-      const targetText = target.innerText;
-      const parentText = currentTarget.innerText;
+      if (clickedTabText === activeTab || clickedTabText === currentTarget.innerText) return;
 
-      dispatch(handleTabClick({ targetText, parentText }));
-      dispatch(getContentData({ marketTitle: activeTab }));
+      dispatch(handleTabClick({ clickedTabText }));
       dispatch(getChartData({ marketTitle: activeTab }));
     }
   };
 
   useEffect(() => {
-    dispatch(getContentData({ marketTitle: activeTab }));
+    switch (activeTab) {
+      case TABS.SUMMARY:
+        // dispatch(getSummaryData());
+        break;
+      case TABS.WILDBERRIES:
+        dispatch(getWildberriesData());
+        break;
+      case TABS.OZON:
+        // dispatch(getOzonData());
+        break;
+      case TABS.YAMARKET:
+        // dispatch(getYaMarketData());
+        break;
+    }
+
     dispatch(getChartData({ marketTitle: activeTab }));
   }, [dispatch, activeTab]);
 
